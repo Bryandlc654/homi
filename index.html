@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homii | Tecnología y electrodomésticos con confianza</title>
+<meta name="description" content="En Homii compras con confianza y resuelves tu hogar sin complicaciones. Televisores, cocinas, línea blanca y más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Poppins/Outfit son el respaldo visual de Publica Play y Thatura. Coloca los archivos en /fonts para usar las originales. -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @font-face { font-family: 'Publica Play'; src: local('Publica Play'), url('fonts/PublicaPlay.woff2') format('woff2'); font-weight: 400 900; font-display: swap; }
+  @font-face { font-family: 'Thatura'; src: local('Thatura'), url('fonts/Thatura.woff2') format('woff2'); font-weight: 400 900; font-display: swap; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Thatura', 'Poppins', system-ui, sans-serif; }
+  .font-display { font-family: 'Publica Play', 'Outfit', 'Poppins', sans-serif; letter-spacing: -.01em; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+  .zoom img { transition: transform .6s ease; }
+  .zoom:hover img { transform: scale(1.04); }
+  .card { transition: box-shadow .2s ease, border-color .2s ease; }
+  .card:hover { box-shadow: 0 12px 28px -18px rgba(31,43,42,.35); border-color: #C4DFDC; }
+  .chip[aria-pressed="true"] { background: #16312F; color: #fff; border-color: #16312F; }
+  :focus-visible { outline: 3px solid #85B9B4; outline-offset: 2px; border-radius: 6px; }
+  @media (prefers-reduced-motion: reduce) {
+    *:not(.marquee-track), *:not(.marquee-track)::before, *:not(.marquee-track)::after { transition-duration: .01ms !important; animation: none !important; scroll-behavior: auto !important; }
+  }
+  .marquee-track { animation: marquee 32s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+</style>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: {
+      homii: { 50:'#F4F9F8', 100:'#E3F0EE', 200:'#C4DFDC', 300:'#85B9B4', 400:'#6BAAA4', 500:'#4E968F', 600:'#3A7C76', 700:'#2F6560', 800:'#1F4744', 900:'#16312F' },
+      sun:  { 100:'#FAF2D3', 300:'#E1C564', 400:'#CFAE45' },
+      zest: { 400:'#E58F4A', 500:'#D37F37', 600:'#B86A28' },
+      ink: '#1B2726'
+    }
+  }}}
+</script>
+</head>
+<body class="bg-white text-ink antialiased">
+
+<svg width="0" height="0" class="absolute" aria-hidden="true">
+  <defs>
+    <symbol id="logo-mark" viewBox="0 0 48 44">
+      <path d="M4 20 L24 4 L44 20" fill="none" stroke="#E1C564" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M10 26 V30 a14 14 0 0 0 28 0 V26" fill="none" stroke="#D37F37" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="s-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 6v6c0 4.5 3.2 7.8 8 9 4.8-1.2 8-4.5 8-9V6l-8-3Zm-3.5 9 2.5 2.5L15.5 10"/></symbol>
+    <symbol id="s-bulb" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></symbol>
+    <symbol id="s-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.5 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></symbol>
+    <symbol id="s-grid" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></symbol>
+    <symbol id="s-truck" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M2 6h11v10H2zM13 9h4l4 3v4h-8M6.5 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm11 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/></symbol>
+    <symbol id="s-card" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></g></symbol>
+    <symbol id="s-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.3 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9Z"/></symbol>
+    <symbol id="s-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<!-- Barra superior -->
+<div class="bg-homii-900 text-white text-xs">
+  <div class="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between gap-4">
+    <p class="flex items-center gap-2"><svg class="w-4 h-4 text-sun-300"><use href="#s-truck"/></svg><span><b class="font-semibold">Envío gratis</b> desde S/ 299 · Entrega a todo el Perú</span></p>
+    <nav class="hidden md:flex items-center gap-6 text-homii-200" aria-label="Ayuda">
+      <a href="#" class="hover:text-white">Seguimiento de pedido</a>
+      <a href="#" class="hover:text-white">Centro de ayuda</a>
+    </nav>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100">
+  <div class="mx-auto max-w-7xl px-4 h-[68px] flex items-center gap-4 lg:gap-10">
+    <a href="#" class="flex items-center gap-2 shrink-0" aria-label="Homii, inicio">
+      <svg class="w-9 h-9"><use href="#logo-mark"/></svg>
+      <span class="font-display font-extrabold text-[26px] tracking-tight text-homii-400">HOMII</span>
+    </a>
+
+    <form class="flex-1 hidden sm:flex items-center h-11 bg-gray-50 border border-gray-200 rounded-xl overflow-hidden focus-within:border-homii-400 focus-within:ring-4 focus-within:ring-homii-100 transition" role="search" onsubmit="return false">
+      <label for="buscar" class="sr-only">Buscar productos</label>
+      <input id="buscar" type="search" placeholder="Busca televisores, cocinas, refrigeradoras…" class="flex-1 h-full bg-transparent px-4 text-sm outline-none placeholder:text-gray-400">
+      <button class="h-full px-5 bg-homii-600 hover:bg-homii-700 transition text-white" aria-label="Buscar">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+    </form>
+
+    <div class="flex items-center gap-1 ml-auto sm:ml-0 text-sm font-medium">
+      <a href="#" class="hidden lg:flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50">
+        <svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>
+        <span>Ingresar</span>
+      </a>
+      <a href="#" class="relative flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50" aria-label="Carrito de compras">
+        <svg class="w-5 h-5 text-gray-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.5 11h10l2-8H6.5"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></svg>
+        <span class="hidden sm:inline">Carrito</span>
+        <span id="cartCount" aria-live="polite" class="absolute top-0 left-6 bg-zest-500 text-white text-[10px] font-bold min-w-[18px] h-[18px] px-1 rounded-full grid place-items-center transition-transform">0</span>
+      </a>
+    </div>
+  </div>
+
+  <form class="sm:hidden px-4 pb-3" role="search" onsubmit="return false">
+    <label for="buscar-m" class="sr-only">Buscar productos</label>
+    <input id="buscar-m" type="search" placeholder="¿Qué buscas para tu hogar?" class="w-full h-11 bg-gray-50 border border-gray-200 rounded-xl px-4 text-sm outline-none focus:border-homii-400">
+  </form>
+
+  <nav class="border-t border-gray-100" aria-label="Categorías">
+    <div class="mx-auto max-w-7xl px-4 flex items-center overflow-x-auto no-scrollbar text-sm">
+      <a href="#ofertas" class="flex items-center gap-2 font-semibold text-homii-700 py-3 pr-5 shrink-0"><svg class="w-4 h-4"><use href="#s-grid"/></svg>Todas las categorías</a>
+      <a href="#ofertas" class="px-4 py-3 text-gray-600 hover:text-homii-700 shrink-0">Televisores</a>
+      <a href="#ofertas" class="px-4 py-3 text-gray-600 hover:text-homii-700 shrink-0">Cocinas</a>
+      <a href="#ofertas" class="px-4 py-3 text-gray-600 hover:text-homii-700 shrink-0">Línea blanca</a>
+      <a href="#ofertas" class="px-4 py-3 text-gray-600 hover:text-homii-700 shrink-0">Pequeños electro</a>
+      <a href="#ofertas" class="px-4 py-3 text-gray-600 hover:text-homii-700 shrink-0">Cómputo</a>
+      <a href="#ofertas" class="px-4 py-3 text-gray-600 hover:text-homii-700 shrink-0">Celulares</a>
+      <a href="#ofertas" class="ml-auto pl-4 py-3 text-zest-600 font-semibold shrink-0">Ofertas del día</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="w-full" aria-label="Promoción destacada">
+  <div class="relative overflow-hidden bg-[#F4F6F8] h-[360px] sm:h-[460px] lg:h-[560px]">
+
+    <article class="absolute inset-0 bg-[#F4F6F8]">
+      <img src="images/hero-colormax.webp" alt="JVC QLED 43 pulgadas, Color Max" class="absolute inset-0 w-full h-full object-contain object-center">
+    </article>
+  </div>
+</section>
+
+<!-- BLOQUE DE MARCAS -->
+<section class="bg-gray-50 py-8 sm:py-10" aria-label="Marcas para tu hogar">
+  <div class="mx-auto max-w-7xl px-4">
+    <div class="flex justify-center">
+      <span class="bg-white border-[3px] border-sun-300 rounded-full px-6 py-2 font-display font-extrabold text-lg sm:text-2xl whitespace-nowrap">DE TODO PARA TU HOGAR</span>
+    </div>
+    <div class="marquee mt-7 overflow-hidden" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)">
+      <div class="marquee-track flex w-max py-2">
+      <div class="flex items-center gap-14 pr-14 shrink-0">
+        <img src="images/logo-coldex.png" alt="Coldex" loading="lazy" class="h-12 w-auto object-contain mix-blend-multiply shrink-0">
+        <img src="images/logo-lg.png" alt="LG" loading="lazy" class="h-12 w-auto object-contain mix-blend-multiply shrink-0">
+        <img src="images/logo-jvc.png" alt="JVC" loading="lazy" class="h-12 w-auto object-contain mix-blend-multiply shrink-0">
+        <img src="images/logo-hisense.png" alt="Hisense" loading="lazy" class="h-12 w-auto object-contain mix-blend-multiply shrink-0">
+        <img src="images/logo-indurama.png" alt="Indurama" loading="lazy" class="h-12 w-auto object-contain mix-blend-multiply shrink-0">
+      </div>
+      <div class="flex items-center gap-14 pr-14 shrink-0" aria-hidden="true">
+        <img src="images/logo-coldex.png" alt="" loading="lazy" class="h-12 w-auto object-contain mix-blend-multiply shrink-0">
+        <img src="images/logo-lg.png" alt="" loading="lazy" class="h-12 w-auto object-contain mix-blend-multiply shrink-0">
+        <img src="images/logo-jvc.png" alt="" loading="lazy" class="h-12 w-auto object-contain mix-blend-multiply shrink-0">
+        <img src="images/logo-hisense.png" alt="" loading="lazy" class="h-12 w-auto object-contain mix-blend-multiply shrink-0">
+        <img src="images/logo-indurama.png" alt="" loading="lazy" class="h-12 w-auto object-contain mix-blend-multiply shrink-0">
+      </div>
+      </div>
+    </div>
+
+    <div class="mt-6 grid md:grid-cols-3 gap-4 sm:gap-5">
+      <!-- Promo simple -->
+      <article class="zoom relative overflow-hidden rounded-3xl aspect-[4/3] text-white">
+        <img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        <div class="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide">Xiaomi</p>
+            <h3 class="font-display font-bold text-lg sm:text-xl leading-tight">Aspiradora robot 20000 Pa</h3>
+          </div>
+          <div class="text-right shrink-0">
+            <p class="text-xs line-through text-white/80">Antes S/ 2,499</p>
+            <p class="font-display font-extrabold text-3xl leading-none">S/ 2,199</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Comparación VS 1 -->
+      <article class="relative overflow-hidden rounded-3xl aspect-[4/3] text-white md:col-span-1">
+        <img src="https://images.unsplash.com/photo-1629234358103-5b5ee53ece9c?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" style="clip-path:polygon(0 0,52% 0,48% 100%,0 100%)">
+        <img src="https://images.unsplash.com/photo-1639405069836-f82aa6dcb900?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" style="clip-path:polygon(52% 0,100% 0,100% 100%,48% 100%)">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>
+        <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-sun-300 text-ink font-display font-extrabold grid place-items-center shadow-lg z-10">VS</span>
+        <div class="absolute left-4 bottom-4 max-w-[45%]">
+          <p class="text-[11px] font-semibold uppercase">Set de ollas 12 pz.</p>
+          <p class="font-display font-extrabold text-2xl leading-none mt-1">S/ 249</p>
+        </div>
+        <div class="absolute right-4 bottom-4 max-w-[45%] text-right">
+          <p class="text-[11px] font-semibold uppercase">Set de ollas 9 pz.</p>
+          <p class="font-display font-extrabold text-2xl leading-none mt-1">S/ 199</p>
+        </div>
+      </article>
+
+      <!-- Comparación VS 2 -->
+      <article class="relative overflow-hidden rounded-3xl aspect-[4/3] text-white">
+        <img src="https://images.unsplash.com/photo-1556910633-5099dc3971e8?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" style="clip-path:polygon(0 0,52% 0,48% 100%,0 100%)">
+        <img src="https://images.unsplash.com/photo-1623114112815-74a4b9fe505d?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" style="clip-path:polygon(52% 0,100% 0,100% 100%,48% 100%)">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>
+        <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-sun-300 text-ink font-display font-extrabold grid place-items-center shadow-lg z-10">VS</span>
+        <div class="absolute left-4 bottom-4 max-w-[45%]">
+          <p class="text-[11px] font-semibold uppercase">Pack tetera + termo</p>
+          <p class="font-display font-extrabold text-2xl leading-none mt-1">S/ 89</p>
+        </div>
+        <div class="absolute right-4 bottom-4 max-w-[45%] text-right">
+          <p class="text-[11px] font-semibold uppercase">Olla a presión 3</p>
+          <p class="font-display font-extrabold text-2xl leading-none mt-1">S/ 129</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="border-b border-gray-100 bg-white" aria-label="Beneficios de compra">
+  <div class="mx-auto max-w-7xl px-4 py-6 grid grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-5">
+    <div class="flex items-center gap-3"><svg class="w-7 h-7 text-homii-500 shrink-0"><use href="#s-shield"/></svg><p class="text-sm leading-tight"><b class="block font-semibold">100% originales</b><span class="text-gray-500">Distribuidor autorizado</span></p></div>
+    <div class="flex items-center gap-3"><svg class="w-7 h-7 text-homii-500 shrink-0"><use href="#s-truck"/></svg><p class="text-sm leading-tight"><b class="block font-semibold">Entrega confiable</b><span class="text-gray-500">Seguimiento en línea</span></p></div>
+    <div class="flex items-center gap-3"><svg class="w-7 h-7 text-homii-500 shrink-0"><use href="#s-heart"/></svg><p class="text-sm leading-tight"><b class="block font-semibold">Garantía y respaldo</b><span class="text-gray-500">Soporte post-venta</span></p></div>
+    <div class="flex items-center gap-3"><svg class="w-7 h-7 text-homii-500 shrink-0"><use href="#s-bulb"/></svg><p class="text-sm leading-tight"><b class="block font-semibold">Te asesoramos</b><span class="text-gray-500">Elige sin ser experto</span></p></div>
+    <div class="flex items-center gap-3 col-span-2 lg:col-span-1"><svg class="w-7 h-7 text-homii-500 shrink-0"><use href="#s-card"/></svg><p class="text-sm leading-tight"><b class="block font-semibold">Compra segura</b><span class="text-gray-500">Hasta 12 cuotas*</span></p></div>
+  </div>
+</section>
+
+<!-- OFERTAS -->
+<section id="ofertas" class="bg-gray-50 py-14 sm:py-16">
+  <div class="mx-auto max-w-7xl px-4">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+      <div>
+        <p class="text-zest-600 font-semibold text-sm tracking-wide uppercase">Solo por hoy</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl mt-1">Ofertas del día</h2>
+      </div>
+      <div class="flex items-center gap-2 text-sm" aria-label="Tiempo restante de la oferta">
+        <span class="text-gray-500 mr-1">Termina en</span>
+        <span class="bg-homii-900 text-white rounded-md px-2.5 py-1.5 font-display font-bold tabular-nums"><span id="h">00</span>h</span>
+        <span class="bg-homii-900 text-white rounded-md px-2.5 py-1.5 font-display font-bold tabular-nums"><span id="m">00</span>m</span>
+        <span class="bg-zest-500 text-white rounded-md px-2.5 py-1.5 font-display font-bold tabular-nums"><span id="s">00</span>s</span>
+      </div>
+    </div>
+
+    <div id="filtros" class="flex gap-2 overflow-x-auto no-scrollbar pb-1 mb-6" role="group" aria-label="Filtrar ofertas por categoría"></div>
+
+    <div id="productos" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5"></div>
+    <p id="vacio" class="hidden text-center text-gray-500 py-12">No hay ofertas en esta categoría por ahora.</p>
+  </div>
+</section>
+
+<!-- FINANCIAMIENTO Y PROMOCIONES -->
+<section class="mx-auto max-w-7xl px-4 py-14 sm:py-16">
+  <article class="relative overflow-hidden rounded-3xl aspect-[4/3] sm:aspect-[16/6] text-white">
+    <img src="https://images.unsplash.com/photo-1556910633-5099dc3971e8?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-l from-homii-900/95 via-homii-900/70 to-homii-900/10"></div>
+    <div class="relative h-full w-full sm:w-3/5 ml-auto px-6 sm:px-12 flex flex-col justify-center items-end text-right">
+      <p class="text-xs font-semibold uppercase tracking-widest text-sun-300">Compra tranquilo</p>
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl leading-tight mt-2">Hasta 12 cuotas <span class="text-sun-300">sin interés</span>*</h2>
+      <p class="mt-3 text-sm sm:text-base text-white/85 max-w-sm">Elige tu producto, paga a tu ritmo y recíbelo en casa con garantía oficial.</p>
+      <a href="#ofertas" class="mt-6 inline-flex items-center gap-2 bg-zest-500 hover:bg-zest-600 transition font-semibold px-6 py-3 rounded-lg">Comprar ahora <svg class="w-4 h-4"><use href="#s-arrow"/></svg></a>
+    </div>
+  </article>
+
+  <div class="mt-5 grid md:grid-cols-2 gap-5">
+    <!-- Congeladora -->
+    <article class="relative overflow-hidden rounded-3xl aspect-[4/3] sm:aspect-[16/10] text-white">
+      <img src="https://images.unsplash.com/photo-1610733374054-59454fe657cd?auto=format&fit=crop&w=1000&q=80" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-left">
+      <div class="absolute inset-0 bg-gradient-to-l from-homii-900/95 via-homii-900/60 to-transparent"></div>
+      <div class="absolute inset-y-0 right-0 w-1/2 px-4 flex flex-col items-center justify-center text-center">
+        <p class="font-display font-extrabold text-3xl sm:text-4xl leading-none">mabe</p>
+        <p class="font-display font-bold text-lg sm:text-xl leading-tight mt-2 uppercase">Congeladora blanca 290 L</p>
+        <p class="text-[11px] text-white/70 mt-1 tracking-wide">CHMHM290PHLB0</p>
+        <p class="font-display font-extrabold text-5xl sm:text-6xl leading-none mt-3"><span class="text-2xl align-top">S/</span>949</p>
+        <p class="text-xs text-white/80 mt-1">Antes S/ 1,689</p>
+      </div>
+    </article>
+
+    <!-- Sillas + mochila -->
+    <article class="relative overflow-hidden rounded-3xl aspect-[4/3] sm:aspect-[16/10] text-white">
+      <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=1000&q=80" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-l from-homii-900/95 via-homii-900/60 to-transparent"></div>
+      <span class="absolute left-[38%] top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-sun-300 text-ink font-display font-extrabold grid place-items-center shadow-lg">+</span>
+      <div class="absolute inset-y-0 right-0 w-1/2 px-4 flex flex-col items-center justify-center text-center">
+        <p class="font-display font-extrabold text-2xl sm:text-3xl leading-tight uppercase">Sillas de escritorio</p>
+        <p class="text-[11px] text-white/70 mt-1 tracking-wide">SKMOCHILAPLAIN_b</p>
+        <p class="font-display font-semibold text-lg mt-3">Desde</p>
+        <p class="font-display font-extrabold text-5xl sm:text-6xl leading-none"><span class="text-2xl align-top">S/</span>89</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="mx-auto max-w-7xl px-4 pb-16">
+  <div class="relative overflow-hidden rounded-3xl bg-homii-900 text-white px-6 py-10 sm:px-12 sm:py-12 grid md:grid-cols-[1.2fr_1fr] gap-8 items-center">
+    <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-homii-700/40 pointer-events-none"></div>
+    <div class="relative">
+      <span class="inline-flex items-center gap-2 bg-sun-300 text-ink text-xs font-bold uppercase tracking-wide px-3 py-1.5 rounded-full">Cupón de bienvenida</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl leading-tight mt-4">Recibe ofertas antes que nadie y <span class="text-sun-300">10% de descuento</span> en tu primera compra</h2>
+      <p class="mt-3 text-homii-200 text-sm sm:text-base max-w-lg">Sin spam. Solo las ofertas que te ayudan a resolver tu hogar.</p>
+    </div>
+    <form class="relative" onsubmit="event.preventDefault(); this.innerHTML='<p class=&quot;font-display font-semibold text-xl text-sun-300&quot;>¡Listo! Revisa tu correo para tu cupón.</p>'">
+      <label for="email" class="sr-only">Correo electrónico</label>
+      <div class="flex flex-col sm:flex-row gap-3 bg-white/10 p-2 rounded-2xl border border-white/15 focus-within:border-sun-300 transition">
+        <input id="email" type="email" required placeholder="tucorreo@ejemplo.com" class="flex-1 h-12 bg-transparent px-4 text-white placeholder:text-homii-200/70 outline-none">
+        <button class="h-12 bg-zest-500 hover:bg-zest-600 active:scale-[.98] transition text-white font-semibold px-7 rounded-xl">Quiero mi cupón</button>
+      </div>
+      <p class="mt-3 text-xs text-homii-200/80">Al suscribirte aceptas recibir comunicaciones de Homii. Puedes darte de baja cuando quieras.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="bg-homii-900 text-homii-200">
+  <div class="mx-auto max-w-7xl px-4 py-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <a href="#" class="flex items-center gap-2"><svg class="w-9 h-9"><use href="#logo-mark"/></svg><span class="font-display font-extrabold text-[26px] text-homii-300">HOMII</span></a>
+      <p class="mt-4 text-sm leading-relaxed">Compras con confianza. Resuelves tu hogar sin complicaciones.</p>
+    </div>
+    <div><h4 class="font-display font-semibold text-white mb-4">Compra</h4><ul class="space-y-2.5 text-sm"><li><a href="#" class="hover:text-white">Televisores</a></li><li><a href="#" class="hover:text-white">Cocinas</a></li><li><a href="#" class="hover:text-white">Línea blanca</a></li><li><a href="#ofertas" class="hover:text-white">Ofertas</a></li></ul></div>
+    <div><h4 class="font-display font-semibold text-white mb-4">Ayuda</h4><ul class="space-y-2.5 text-sm"><li><a href="#" class="hover:text-white">Garantía y devoluciones</a></li><li><a href="#" class="hover:text-white">Envíos y entregas</a></li><li><a href="#" class="hover:text-white">Medios de pago</a></li><li><a href="#" class="hover:text-white">Libro de reclamaciones</a></li></ul></div>
+    <div><h4 class="font-display font-semibold text-white mb-4">Contáctanos</h4><ul class="space-y-2.5 text-sm"><li>Lun a Dom · 8:00 a 22:00</li><li>hola@homii.pe</li><li>(01) 600 0000</li></ul></div>
+  </div>
+  <div class="border-t border-white/10 py-5 text-center text-xs text-homii-300/80 px-4">© 2026 Homii. Todos los derechos reservados. *Cuotas sujetas a evaluación y entidades participantes.</div>
+</footer>
+
+<script>
+  const U = (id, w, h) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
+  const fmt = n => 'S/ ' + n.toLocaleString('es-PE');
+
+
+  /* Ofertas */
+  const products = [
+    { n:'Smart TV 55" 4K UHD',           b:'Samsung', c:'Televisores',      img:'1646861039459-fd9e3aabf3fb', p:1599, o:2599, r:4.8, rv:312 },
+    { n:'Cocina 5 hornillas a gas',      b:'Mabe',    c:'Cocinas',          img:'1639405069836-f82aa6dcb900', p:1099, o:1499, r:4.7, rv:204 },
+    { n:'Refrigeradora No Frost 300 L',  b:'LG',      c:'Refrigeradoras',   img:'1642497590397-7f4384a19966', p:1749, o:2299, r:4.9, rv:451 },
+    { n:'Lavadora carga frontal 13 kg',  b:'Samsung', c:'Lavadoras',        img:'1626806787461-102c1bfaaea1', p:1399, o:1999, r:4.8, rv:276 },
+    { n:'Freidora de aire 5.5 L',        b:'Philips', c:'Pequeños electro', img:'1695089028114-ce28248f0ab9', p:339,  o:529,  r:4.7, rv:588 },
+    { n:'Licuadora de alto rendimiento', b:'Oster',   c:'Pequeños electro', img:'1585237672814-8f85a8118bf6', p:189,  o:299,  r:4.6, rv:342 },
+    { n:'Laptop 15.6" 16 GB / 512 GB',   b:'Lenovo',  c:'Cómputo',          img:'1496181133206-80ce9b88a853', p:2299, o:2899, r:4.8, rv:167 },
+    { n:'Smartphone 256 GB 5G',          b:'Samsung', c:'Celulares',        img:'1592890288564-76628a30a657', p:1199, o:1599, r:4.7, rv:239 },
+  ];
+
+  const grid = document.getElementById('productos');
+  const vacio = document.getElementById('vacio');
+  const filtros = document.getElementById('filtros');
+  const categorias = ['Todas', ...new Set(products.map(p => p.c))];
+
+  const card = x => {
+    const off = Math.round((1 - x.p / x.o) * 100);
+    return `
+    <article class="card bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col">
+      <div class="zoom relative aspect-[4/3] overflow-hidden bg-gray-100">
+        <img src="${U(x.img,640,480)}" alt="${x.n}" loading="lazy" class="w-full h-full object-cover">
+        <span class="absolute left-3 top-3 bg-zest-500 text-white text-xs font-bold px-2 py-1 rounded">-${off}%</span>
+        <button data-fav aria-pressed="false" aria-label="Guardar ${x.n} en favoritos" class="absolute right-3 top-3 w-8 h-8 rounded-full bg-white shadow-sm grid place-items-center text-gray-500 hover:text-zest-600 transition aria-[pressed=true]:text-zest-600">
+          <svg class="w-4 h-4"><use href="#s-heart"/></svg>
+        </button>
+      </div>
+      <div class="p-3 sm:p-4 flex flex-col flex-1">
+        <p class="text-[11px] sm:text-xs font-semibold text-homii-600 uppercase tracking-wide">${x.b}</p>
+        <h3 class="font-display font-semibold text-sm sm:text-base leading-snug mt-1 min-h-[2.5rem]">${x.n}</h3>
+        <p class="flex items-center gap-1 text-xs mt-1.5 text-gray-500"><svg class="w-3.5 h-3.5 text-sun-400"><use href="#s-star"/></svg><b class="text-ink">${x.r}</b> (${x.rv})</p>
+        <div class="mt-3">
+          <span class="text-xs text-gray-400 line-through">${fmt(x.o)}</span>
+          <p class="font-display font-bold text-xl sm:text-2xl text-ink leading-none mt-0.5">${fmt(x.p)}</p>
+          <p class="text-[11px] text-gray-500 mt-1.5">12 cuotas de ${fmt(Math.round(x.p/12))}*</p>
+        </div>
+        <button data-add class="mt-4 w-full bg-homii-600 hover:bg-homii-700 active:scale-[.98] transition text-white font-semibold text-sm py-2.5 rounded-lg">Agregar al carrito</button>
+      </div>
+    </article>`;
+  };
+
+  function render(cat) {
+    const list = cat === 'Todas' ? products : products.filter(p => p.c === cat);
+    grid.innerHTML = list.map(card).join('');
+    vacio.classList.toggle('hidden', list.length > 0);
+    filtros.querySelectorAll('.chip').forEach(b => b.setAttribute('aria-pressed', b.dataset.cat === cat));
+  }
+
+  filtros.innerHTML = categorias.map(c => `
+    <button class="chip shrink-0 text-sm font-medium px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 hover:border-homii-300 transition" data-cat="${c}" aria-pressed="false">${c}</button>`).join('');
+  filtros.addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) render(b.dataset.cat); });
+
+  /* Favoritos y carrito (delegación de eventos) */
+  let count = 0;
+  const badge = document.getElementById('cartCount');
+  grid.addEventListener('click', e => {
+    const fav = e.target.closest('[data-fav]');
+    if (fav) {
+      const on = fav.getAttribute('aria-pressed') !== 'true';
+      fav.setAttribute('aria-pressed', on);
+      return;
+    }
+    const add = e.target.closest('[data-add]');
+    if (add) {
+      badge.textContent = ++count;
+      badge.classList.add('scale-125');
+      setTimeout(() => badge.classList.remove('scale-125'), 200);
+      add.textContent = '✓ Agregado';
+      add.classList.replace('bg-homii-600', 'bg-zest-500');
+      add.classList.replace('hover:bg-homii-700', 'hover:bg-zest-600');
+      setTimeout(() => {
+        add.textContent = 'Agregar al carrito';
+        add.classList.replace('bg-zest-500', 'bg-homii-600');
+        add.classList.replace('hover:bg-zest-600', 'hover:bg-homii-700');
+      }, 1200);
+    }
+  });
+
+  render('Todas');
+
+  /* Cuenta regresiva hasta medianoche */
+  const hh = document.getElementById('h'), mm = document.getElementById('m'), ss = document.getElementById('s');
+  function tick() {
+    const now = new Date(), end = new Date(now); end.setHours(23,59,59,999);
+    const d = Math.max(0, end - now), p = n => String(n).padStart(2,'0');
+    hh.textContent = p(Math.floor(d/36e5)); mm.textContent = p(Math.floor(d%36e5/6e4)); ss.textContent = p(Math.floor(d%6e4/1e3));
+  }
+  tick(); setInterval(tick, 1000);
+
+</script>
+</body>
+</html>
